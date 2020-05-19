@@ -1,4 +1,4 @@
-module pub-sub-practice
+module github.com/KouT127/pub-sub-practice
 
 go 1.13
 

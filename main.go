@@ -3,6 +3,8 @@ package main
 import (
 	"cloud.google.com/go/pubsub"
 	"context"
+	"encoding/json"
+	"github.com/KouT127/pub-sub-practice/model"
 	"google.golang.org/api/option"
 	"log"
 	"os"
@@ -50,9 +52,19 @@ func (c *PubSubClient) configureTopics() *Topic {
 	}
 	return &Topic{topic}
 }
+
 func (t *Topic) PublishMessage(ctx context.Context, msg string) (string, error) {
+	message, err := json.Marshal(model.StorageInformation{
+		FileName:      "c2e1fdf7a30a38dca150351659fdea8e",
+		FileExtension: "png",
+		Directory:     "photos/users/4d2b645a-e674-4805-b31a-d6806e7ecb08",
+		ImagePath:     "photos/users/4d2b645a-e674-4805-b31a-d6806e7ecb08/c2e1fdf7a30a38dca150351659fdea8e.png",
+	})
+	if err != nil {
+		return "", err
+	}
 	result := t.Publish(ctx, &pubsub.Message{
-		Data: []byte(msg),
+		Data: []byte(message),
 	})
 	serverID, err := result.Get(ctx)
 	if err != nil {
