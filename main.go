@@ -28,7 +28,7 @@ func main() {
 	log.Print(ID)
 }
 
-const helloTopicName = "hello"
+const resizeTopic = "resizeTopic"
 
 func NewPubSubClient() *PubSubClient {
 	ctx := context.Background()
@@ -42,7 +42,7 @@ func NewPubSubClient() *PubSubClient {
 
 func (c *PubSubClient) configureTopics() *Topic {
 	ctx := context.Background()
-	topic := c.Topic(helloTopicName)
+	topic := c.Topic(resizeTopic)
 	exists, err := topic.Exists(ctx)
 	if err != nil {
 		log.Fatal(err)

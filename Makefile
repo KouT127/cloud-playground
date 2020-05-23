@@ -20,7 +20,8 @@ deploy:
 setup-subscription:
 	gcloud run services add-iam-policy-binding pubsub-practice \
         --member=serviceAccount:cloud-run-pubsub-invoker@${PROJECT_ID}.iam.gserviceaccount.com \
-        --role=roles/run.invoker
+        --role=roles/run.invoker --platform managed
+
 	gcloud pubsub subscriptions create resizeSubscription --topic resizeTopic \
        --push-endpoint=${ENDPOINT} \
        --push-auth-service-account=cloud-run-pubsub-invoker@${PROJECT_ID}.iam.gserviceaccount.com
