@@ -12,6 +12,8 @@ import (
 func main() {
 	config.Configure()
 	http.HandleFunc("/resize", middleware.CloudTraceMiddleware(handler.ResizeSubscriptionHandler))
+	http.HandleFunc("/task", middleware.CloudTraceMiddleware(handler.TaskHandler))
+
 
 	port := os.Getenv("PORT")
 	if port == "" {

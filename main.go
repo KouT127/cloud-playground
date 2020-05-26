@@ -10,6 +10,8 @@ import (
 	"os"
 )
 
+const resizeTopic = "resizeTopic"
+
 type PubSubClient struct {
 	*pubsub.Client
 }
@@ -18,17 +20,28 @@ type Topic struct {
 }
 
 func main() {
-	ctx := context.Background()
-	client := NewPubSubClient()
-	topic := client.configureTopics()
-	ID, err := topic.PublishMessage(ctx, "hello")
+	//ctx := context.Background()
+	//client := NewPubSubClient()
+	//topic := client.configureTopics()
+	//ID, err := topic.PublishMessage(ctx, "hello")
+	//if err != nil {
+	//	log.Fatalf("%v", err)
+	//}
+	//log.Print(ID)
+}
+
+func NewCloudTask() {
+	projectID := os.Getenv("PROJECT_ID")
+	locationID := "asia-northeast1"
+	url := os.Getenv("CLOUD_RUN_URL")
+	queueID := "TaskQueue"
+	email := os.Getenv("CLOUD_TASK_SERVICE_EMAIL")
+	message := "test"
+	_, err := model.CreateHTTPTaskWithToken(projectID, locationID, url, queueID, email, message)
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
-	log.Print(ID)
 }
-
-const resizeTopic = "resizeTopic"
 
 func NewPubSubClient() *PubSubClient {
 	ctx := context.Background()

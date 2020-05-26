@@ -118,3 +118,19 @@ func ResizeSubscriptionHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "ok")
 	return
 }
+
+func TaskHandler(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	trace, ok := ctx.Value(middleware.CloudTraceContext).(string)
+	if !ok {
+		trace = ""
+	}
+	log.Println(model.Entry{
+		Message:   "task catch",
+		Component: "task",
+		Trace:     trace,
+	})
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, "ok")
+	return
+}
