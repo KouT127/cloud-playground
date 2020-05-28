@@ -4,7 +4,7 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
-	"github.com/KouT127/pub-sub-practice/model"
+	"github.com/KouT127/cloud-playground/model"
 	"google.golang.org/api/option"
 	"log"
 	"os"

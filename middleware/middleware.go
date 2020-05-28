@@ -3,8 +3,8 @@ package middleware
 import (
 	"context"
 	"fmt"
-	"github.com/KouT127/pub-sub-practice/config"
-	"github.com/KouT127/pub-sub-practice/model"
+	"github.com/KouT127/cloud-playground/config"
+	"github.com/KouT127/cloud-playground/model"
 	"log"
 	"net/http"
 	"strings"

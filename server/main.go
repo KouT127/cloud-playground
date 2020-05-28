@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/KouT127/pub-sub-practice/config"
-	"github.com/KouT127/pub-sub-practice/handler"
-	"github.com/KouT127/pub-sub-practice/middleware"
+	"github.com/KouT127/cloud-playground/config"
+	"github.com/KouT127/cloud-playground/handler"
+	"github.com/KouT127/cloud-playground/middleware"
 	"log"
 	"net/http"
 	"os"
